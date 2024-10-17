@@ -5,27 +5,24 @@ import requests
 import ipinfo
 from django.conf import settings
 
+from ip_info_app.servises.api_info_handler import api_info_handler
+
 
 class InfoMain(APIView):
 
     def get(self, request):
-        access_token = settings.TOKEN_API_INFO
-        handler = ipinfo.getHandler(access_token)
-        ip_address = "94.29.25.36"
-        details = handler.getDetails(ip_address)
-        response = {"Наш IP": details.all}
-        return Response(response)
+        ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
+        split_adress = ip_address.split(", ")
+        clean_adress = split_adress[0]
+        json_answer = api_info_handler(clean_adress)
+        return Response(json_answer)
 
 
-# найти тунель для хоста и научится извлекать ip адресс
-# все секретные констатны перекинуть в .env и перекинуть туда же DEBUG, ALLOWED HOST, SECRET_KEY
-# библиотеки  для работы с переменными окружениями (например DJANGO Inviroment)
+#Добавить приложение history и сохранять историю отправки адресов и сохранить все ip
+#сОХРАНЯТЬ историю запросов конкретного человека и реализовать эндпоинт, который будет показывать эту историю
 class ForeingMain(APIView):
 
     def post(self, request):
-        access_token = settings.TOKEN_API_INFO
-        handler = ipinfo.getHandler(access_token)
         ip_adress = request.data.get("ip")
-        details = handler.getDetails(ip_adress)
-        response = {"Успешно прошло": details.all}
-        return Response(response)
+        json_answer = api_info_handler(ip_adress)
+        return Response(json_answer)
