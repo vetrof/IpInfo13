@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "about_app",
     "ip_info_app",
+    "app_history",
 ]
 
 MIDDLEWARE = [

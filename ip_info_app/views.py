@@ -4,10 +4,13 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.utils import json
 from rest_framework.views import APIView
-import requests
-import ipinfo
-from django.conf import settings
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.core.cache import cache
+
+
 from ip_info_app.servises.api_info_handler import api_info_handler
+from ip_info_app.servises.save_to_history import save_history
 
 
 class InfoMain(APIView):
@@ -20,25 +23,37 @@ class InfoMain(APIView):
         return Response(json_answer)
 
 
-# Добавить приложение history и сохранять историю отправки адресов и сохранить все ip
-# сОХРАНЯТЬ историю запросов конкретного человека и реализовать эндпоинт, который будет показывать эту историю
-# Добавить redis, хранить историю в redis запроса один час
+# Ассоциировать запись с конкретным пользователем через request.user, если пользователь анонимный, то ничего не сохраняется
+# Добавить в модель поле с сохраненный историей юзеров, связь с таблицей юзеров по умолчанию джанго
+# Поле должно быть не обязательным
+# Если пользователь анонимный не нужно сохранять его в базу данных
+# Почитать про selary
 # почитать как делать кэш для эндпоинтов, сначала автоматический кэш, затем ручной
 class ForeingMain(APIView):
 
     def post(self, request):
         ip_adress = request.data.get("ip")
         json_answer = api_info_handler(ip_adress)
+        save_history(json_answer)
+        print(request.user)
         return Response(json_answer)
 
 
 class HistoryMain(APIView):
-
     def post(self, request):
         ip_adress = request.data.get("ip")
         json_answer = api_info_handler(ip_adress)
         text = {"json_answer": json_answer}
         with open('ip.csv', 'w') as file:
             file.write(json.dumps(text))
-        return Response(json_answer)
+            return Response(json_answer)
+
+    def cahce_view(self, request):
+        ip_adress = request.data.get("ip")
+        json_answer = api_info_handler(ip_adress)
+        text = {"json_answer": json_answer}
+        cache.set("int", text, timeout=60)
+        i = cache.get("int")
+        return HttpResponse(f"Cache, {i}")
+
 
