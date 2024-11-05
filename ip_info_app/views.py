@@ -1,13 +1,10 @@
-import csv
-from ipware import get_client_ip
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.utils import json
 from rest_framework.views import APIView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.cache import cache
-
+from django.contrib.auth.decorators import login_required
 
 from ip_info_app.servises.api_info_handler import api_info_handler
 from ip_info_app.servises.save_to_history import save_history
@@ -23,19 +20,22 @@ class InfoMain(APIView):
         return Response(json_answer)
 
 
-# Ассоциировать запись с конкретным пользователем через request.user, если пользователь анонимный, то ничего не сохраняется
-# Добавить в модель поле с сохраненный историей юзеров, связь с таблицей юзеров по умолчанию джанго
-# Поле должно быть не обязательным
-# Если пользователь анонимный не нужно сохранять его в базу данных
-# Почитать про selary
+# Соеднить две таблицы History и Users
+# Запустить celery у меня на windows
+# Сделать авторизацию по условиям для admin
+# Сделать нормальную авторизацию
 # почитать как делать кэш для эндпоинтов, сначала автоматический кэш, затем ручной
 class ForeingMain(APIView):
 
     def post(self, request):
         ip_adress = request.data.get("ip")
         json_answer = api_info_handler(ip_adress)
-        save_history(json_answer)
         print(request.user)
+        if request.user.is_authenticated:
+            save_history(json_answer)
+            print("Добро пожаловать обратно!")
+        else:
+            print("Пожалуйста, авторизуйтесь.")
         return Response(json_answer)
 
 
@@ -55,5 +55,3 @@ class HistoryMain(APIView):
         cache.set("int", text, timeout=60)
         i = cache.get("int")
         return HttpResponse(f"Cache, {i}")
-
-
