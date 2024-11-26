@@ -18,3 +18,11 @@ services:
     build: .
     command: celery -A _settings worker -l info
 
+  #celery-beat:
+  #  build: .
+  #  command: celery -A _settings beat -l info
+  #  volumes:
+  #      - .:/code
+  #  depends_on:
+  #      - redis
+

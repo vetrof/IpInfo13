@@ -12,12 +12,9 @@ class History(models.Model):
 
 
 class Users(models.Model):
-    login = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #login = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=50)
 
     def __str__(self):
         return f"{self.user_name}"
-
-    def __unicode__(self):
-        return self.login
 
