@@ -11,6 +11,8 @@ services:
 
   redis:
     image: redis
+    #volumes:
+    #  - redis_volume:/data
     ports:
       - 6379:6379
 
@@ -18,11 +20,24 @@ services:
     build: .
     command: celery -A _settings worker -l info
 
-  #celery-beat:
-  #  build: .
-  #  command: celery -A _settings beat -l info
-  #  volumes:
-  #      - .:/code
-  #  depends_on:
-  #      - redis
+  celery-beat:
+    build: .
+    command: celery -A _settings beat -l info
+    volumes:
+        - .:/code
+    depends_on:
+        - redis
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    ports:
+      - 5432:5432
+
+volumes:
+    postgres_volume:
+    #redis_volume:
 
