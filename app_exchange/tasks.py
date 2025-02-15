@@ -1,13 +1,10 @@
 import requests
 from celery import shared_task
 from django.core.cache import cache
+import csv
 
 
-#Сделать миграции и создать суперюзера, сделать две записи в model, сделать dump базы данных
-#Затем нужно остановить проект и удалить контейнеры и собрать их заново и убедится что все сохранено, затем снова удалить контейнеры и удалить postgres volume, затем заново все собрать
-#docker exec -t ipinfo13-db-1 pg_dumpall -c -U postgr_user > dump.sql - команда дампа базы данных
-#автоматизировать создание backup базы данных
-#IPython - установить и изучить сюда в venv
+# Сохранять бэкап базы данных, создать функцию
 def set_exchange():
     url = "https://www.cbr-xml-daily.ru/latest.js"
     response = requests.get(url)
@@ -22,6 +19,10 @@ def set_exchange():
     print(cache.get("exchange_eur"))
     print(cache.get("exchange_aud"))
 
+
+@shared_task
+def test_task():
+    print("Hello")
 
 
 @shared_task

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "ip_info_app",
     "app_history",
     "app_exchange",
+    "django_celery_beat",
+    "servis",
 ]
 
 MIDDLEWARE = [
@@ -155,6 +157,17 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': 'redis://redis:6379/1',
+    }
+}
+
+CELERY_BEAT_SCHEDULE = {
+    'my_test_task': {
+        'task': 'app_exchange.tasks.test_task',
+        'schedule': 10.0,
+    },
+    'back_up_test_task': {
+        'task': 'servis.tasks.database_backup',
+        'schedule': 15.0,
     }
 }
 
