@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - 8000:8000
+      - 8003:8003
 
   redis:
     image: redis
