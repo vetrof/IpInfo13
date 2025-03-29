@@ -1,0 +1,19 @@
+https://pikabu.ru/
+https://www.eldorado.ru/
+https://www.mvideo.ru/
+https://5ka.ru/
+https://music.yandex.ru/
+https://www.perekrestok.ru/
+https://ru.hexlet.io/qna/python/questions/kak-poschitat-kolichestvo-strok-v-fayle-python
+https://ru.hexlet.io/qna/python/questions/kak-poschitat-kolichestvo-strok-v-fayle-python
+В файле количество букв "а" и "А" - 9161 и количество строк - 158274
+В ссылке https://pikabu.ru/ количество букв "а" и "А" - 9152 и количество строк - 158007
+В файле количество букв "а" и "А" - 17275 и количество строк - 508983
+В файле количество букв "а" и "А" - 22741 и количество строк - 523627
+В ссылке https://stepik.org/catalog?utm_campaign=catalog_2022_04_08&utm_medium=stepik_courses&utm_source=stepik_landing_welcome_new количество букв "а" и "А" - 22755 и количество строк - 523627
+в ссылке https://stepik.org/catalog количество букв "а" и "А" - 22738 и количество строк - 523523
+в ссылке https://pikabu.ru/ количество букв "а" и "А" - 8317 и количество строк - 144534
+в ссылке https://pikabu.ru/ количество букв "а" и "А" - 8317 и количество строк - 144551
+в ссылке https://pikabu.ru/ количество букв "а" и "А" - 8313 и количество строк - 144573
+в ссылке https://pikabu.ru/ количество букв "а" и "А" - 9156 и количество строк - 157955
+в ссылке https://www.geeksforgeeks.org/ количество букв "а" и "А" - 14536 и количество строк - 313747
