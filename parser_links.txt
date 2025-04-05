@@ -17,3 +17,4 @@ https://ru.hexlet.io/qna/python/questions/kak-poschitat-kolichestvo-strok-v-fayl
 в ссылке https://pikabu.ru/ количество букв "а" и "А" - 8313 и количество строк - 144573
 в ссылке https://pikabu.ru/ количество букв "а" и "А" - 9156 и количество строк - 157955
 в ссылке https://www.geeksforgeeks.org/ количество букв "а" и "А" - 14536 и количество строк - 313747
+в ссылке https://pikabu.ru/ количество букв "а" и "А" - 9226 и количество строк - 168907

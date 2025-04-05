@@ -1,0 +1,55 @@
+* {/*Свойства текста на странце для всех контейнеров*/
+    font-family: Century Gothic;
+  }
+
+
+
+.full-page-img {/*Свойства фона страницы (бэкграунд)*/
+    height: 100vh;
+    background: linear-gradient(70deg, #00ffd9, rgba(234, 88, 126, 0.99));
+}
+
+.button-send{/*Свойства блока кпопки отправки и текста сверху*/
+    text-align: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+
+.button-content{/*Свойства фон внутри самой кпопки отправки IP*/
+    height: 40px;
+    width: 340px;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0 0 5px 2px;
+    color: white;
+}
+
+input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: #000000;
+}
+
+.second-page { /*Свойства надписи и поля с IP-адресами*/
+    padding-top: 50px;
+}
+
+.history-box { /*Свойства поля с историей адресов запроса*/
+    background-color: #dbdbdb;
+    border: 1px solid #dbdbdb;
+    max-width: 500px;
+    height: 500px;
+    justify-content: center;
+    margin-left: 700px;
+    box-shadow: 0 0 5px 2px;
+    color: white;
+}

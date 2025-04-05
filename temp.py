@@ -8,15 +8,15 @@ def get():
     url = "https://pikabu.ru/"
     response = requests.get(url)
     txt_response = "".join(response.text.split())
-    print(txt_response)
+    print(response)
     soup = bs4.BeautifulSoup(response.content, "html.parser")
     links = soup.find_all("a")
     for link in links:
         print(link.get('href'))
     for i in txt_response:
-        if i == "a" or i == "A":
-            count += 1
-        lines += 1
+       if i == "a" or i == "A":
+           count += 1
+       lines += 1
     return f'в ссылке {url} количество букв "а" и "А" - {count} и количество строк - {lines}'
 
 
