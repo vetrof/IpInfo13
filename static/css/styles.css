@@ -1,25 +1,59 @@
-* {/*Свойства текста на странце для всех контейнеров*/
+*{
     font-family: Century Gothic;
-  }
-
-
-
-.full-page-img {/*Свойства фона страницы (бэкграунд)*/
-    height: 100vh;
-    background: linear-gradient(70deg, #00ffd9, rgba(234, 88, 126, 0.99));
 }
 
-.button-send{/*Свойства блока кпопки отправки и текста сверху*/
+body {/*Свойства на во всем блоке bodybackground: linear-gradient(70deg, #00ffd9, rgba(234, 88, 126, 0.99)) no-repeat fixed center;*/
+    background-size: cover;
+    background-image: url('../img/fon.jpg');
+}
+
+.first-text{/*Свойства текста в самом вверху*/
     text-align: center;
     align-items: center;
     font-size: 35px;
 }
 
+.button-send{/*Свойства блока контейнера с с вводом IP-адреса*/
+    text-align: center;
+    align-items: center;
+    font-size: 35px;
+    transition: background 0.8s;
+}
+
+.button-send-action{/*Свойства блока кпопки отправки*/
+    text-align: center;
+    align-items: center;
+    transition: background 0.8s;
+    cursor: pointer;
+}
+
+input[type=submit] {/*Стиль кнопки отправить запрос*/
+  transform: translate(-50%, -50%);
+  width: 190px;
+  height: 40px;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid #000000;
+  background: #fff;
+  color: #000000;
+  border-radius: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all .35s;
+    margin-left: 190px;
+    margin-top: 20px;
+}
+
+input[type=submit]:hover{
+  background: #8C82FC;
+  color: #fff;
+}
 
 .button-content{/*Свойства фон внутри самой кпопки отправки IP*/
     height: 40px;
     width: 340px;
-    cursor: pointer;
     display: block;
     font-size: 20px;
     margin-left: auto;
@@ -29,9 +63,10 @@
     border-radius: 10px;
     background-color: #ffffff;
     border: 1px solid #dbdbdb;
+    color: black;
     box-shadow: 0 0 5px 2px;
-    color: white;
 }
+
 
 input::placeholder {
   font-weight: bold;
@@ -39,17 +74,41 @@ input::placeholder {
   color: #000000;
 }
 
+.answer-page { /*Свойства надписи и поля с IP-адресами*/
+    text-align: center;
+    position: static;
+    font-size: 35px;
+}
+
+.answer-box { /*Свойства поля с историей адресов запроса*/
+    background-color: #fffefe;
+    border: 1px solid #dbdbdb;
+    max-width: 500px;
+    height: 100px;
+    justify-content: center;
+    box-shadow: 0 0 5px 2px;
+    color: black;
+    display: block;
+    margin-left: 700px;
+    align-items: center;
+    position: static;
+}
+
 .second-page { /*Свойства надписи и поля с IP-адресами*/
-    padding-top: 50px;
+    text-align: center;
+    align-items: center;
+    font-size: 35px;
 }
 
 .history-box { /*Свойства поля с историей адресов запроса*/
-    background-color: #dbdbdb;
+    background-color: #ffffff;
     border: 1px solid #dbdbdb;
     max-width: 500px;
-    height: 500px;
+    height: 350px;
     justify-content: center;
     margin-left: 700px;
     box-shadow: 0 0 5px 2px;
-    color: white;
+    color: black;
+    display: block;
+    align-items: center;
 }

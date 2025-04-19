@@ -8,18 +8,28 @@
     <title>IpInfo13</title>
 </head>
 <body>
-
-<div class="full-page-img">
-    <div class="button-send">
+    <div class="first-text">
         <p><strong>Введите IP адрес, который хотите узнать!</strong></p>
-        <div class="button-content">
-        <form action="" method="post"><input type="text" class="button-content" placeholder="Введите IP"></form>
+    </div>
+    <div class="button-send">
+            <div class="button-content">
+                <label for="ipv4"></label><input type="text" class="button-content" id="ipv4" name="ipv4" placeholder="Введите IP XXX.XXX.XXX.XXX" pattern="^(?>(\d|[1-9]\d{2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?1)$" required>
+            </div>
+        </div>
+                <div class="button-send-action">
+                <form action="" method="post">
+                <p><input type="submit" name="submit_ip" value="Отправить"></p>
+                </form>
+                </div>
+    <div class="answer-page">
+            <p><strong>Ваш ответ на запрос IP-адреса</strong></p>
+            <div class="answer-box">
+            </div>
         </div>
         <div class="second-page">
             <p><strong>История запроса IP-адресов</strong></p>
-            <div class="history-box"></div>
+            <div class="history-box">
+            </div>
         </div>
-    </div>
-</div>
 </body>
 </html>

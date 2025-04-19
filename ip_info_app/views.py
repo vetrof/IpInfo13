@@ -20,12 +20,6 @@ class InfoMain(APIView):
         return Response(json_answer)
 
 
-# Соеднить две таблицы History и Users
-# Сделать авторизацию по условиям для admin
-# Сделать нормальную авторизацию
-# подобрать другую версию другого питона для докера
-# установить celery beat в отдельный контейнер
-# зафискисровать версию джанго в docker (версия для Linux)
 class ForeingMain(APIView):
 
     def post(self, request):
@@ -56,3 +50,11 @@ class HistoryMain(APIView):
         cache.set("int", text, timeout=60)
         i = cache.get("int")
         return HttpResponse(f"Cache, {i}")
+
+
+def ipinfo(request):
+    return render(request, "index.html")
+
+
+#Соединить форму на фронте с бэкэндом
+#И валидацию на JS
