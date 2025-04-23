@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.core.cache import cache
 from django.contrib.auth.decorators import login_required
 
+from app_history.models import History
 from ip_info_app.servises.api_info_handler import api_info_handler
 from ip_info_app.servises.save_to_history import save_history
 
@@ -53,7 +54,8 @@ class HistoryMain(APIView):
 
 
 def ipinfo(request):
-    return render(request, "index.html")
+    history = History.objects.all()
+    return render(request, "index.html", {"history_list": history})
 
 
 #Соединить форму на фронте с бэкэндом
