@@ -57,6 +57,3 @@ def ipinfo(request):
     history = History.objects.all()
     return render(request, "index.html", {"history_list": history})
 
-
-#Соединить форму на фронте с бэкэндом
-#И валидацию на JS
