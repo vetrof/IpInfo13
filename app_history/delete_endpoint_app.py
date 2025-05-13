@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from requests import Response
+from rest_framework.response import Response
 from rest_framework import status
 from app_history.models import History
 from django.shortcuts import render
@@ -8,8 +8,22 @@ from rest_framework.views import APIView
 
 class CountDelete(APIView):
     def get(self, request):
-        hundred_history = History.objects.all()[0:100]
-        return render(request, "index.html", {'hundred_history': hundred_history})
+        p = request.GET.get("p")
+        p = int(p)
+        print(p)
+        print(type(p))
+        hundred_history = History.objects.all()[0:p]
+        history_list = []
+        for record in hundred_history:
+            ip = record.ip
+            region = record.region
+            data = {"ip": ip, "region": region}
+            history_list.append(data)
+        return Response(history_list)
+        #return Response(hundred_history)
+    #Использовать сериализатор для этого класса
+    #Обработка ошибок Qwery параметров, если присылается другой тип данных
+    #Переминовать названия классов и перевести это все во view
 
 
 class IpAdressDelete(APIView):
