@@ -1,32 +1,26 @@
 # -*- coding: utf-8 -*-
+from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework import status
 from app_history.models import History
-from django.shortcuts import render
 from rest_framework.views import APIView
+from app_history.serializer import HistorySerializer
+from app_history.service import history_servise
 
 
-class CountDelete(APIView):
+class HistoryList(APIView):
     def get(self, request):
-        p = request.GET.get("p")
-        p = int(p)
-        print(p)
-        print(type(p))
-        hundred_history = History.objects.all()[0:p]
-        history_list = []
-        for record in hundred_history:
-            ip = record.ip
-            region = record.region
-            data = {"ip": ip, "region": region}
-            history_list.append(data)
-        return Response(history_list)
-        #return Response(hundred_history)
-    #Использовать сериализатор для этого класса
-    #Обработка ошибок Qwery параметров, если присылается другой тип данных
-    #Переминовать названия классов и перевести это все во view
+        if request.method == 'GET':
+            history_list = History.objects.all()
+            serializer = HistorySerializer(history_list, many=True)
+            return JsonResponse(serializer.data, safe=False)
+        # return Response(hundred_history)
+    # +Использовать сериализатор для этого класса
+    # +Обработка ошибок Qwery параметров, если присылается другой тип данных
+    # Переминовать названия классов и перевести это все во view
 
 
-class IpAdressDelete(APIView):
+class OneStringHistoryDelete(APIView):
     def delete(self, request, id=None):
         history_list = History.objects.get(id=id)
         history_list.delete()
@@ -34,9 +28,17 @@ class IpAdressDelete(APIView):
         return Response(context, status=status.HTTP_202_ACCEPTED)
 
 
-class FullHistoryDelete(APIView):
+class AllHistoryDelete(APIView):
     def delete(self, request):
         full_history = History.objects.all()
         full_history.delete()
         context = "Все записи удалены!"
         return Response(context, status=status.HTTP_202_ACCEPTED)
+
+
+class HistoryListClear(APIView):
+    def get(self, request):
+        if request.method == "GET":
+            history_list = history_servise()
+            serializer = HistorySerializer(history_list, many=True)
+            return JsonResponse(serializer.data, safe=False)
