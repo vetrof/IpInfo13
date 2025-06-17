@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no»"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css"/>
+    <title>IpInfo13</title>
+</head>
+<body>
+    <div class="first-text">
+        <p><strong>Введите IP адрес, который хотите узнать!</strong></p>
+    </div>
+    <div class="button-send">
+            <div class="button-content">
+                <label for="ipv4"></label><input type="text" class="button-content" id="ipv4" name="ipv4" placeholder="Введите IP XXX.XXX.XXX.XXX" pattern="^(?>(\d|[1-9]\d{2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(?1)$" required>
+            </div>
+        </div>
+                <div class="button-send-action">
+                <form action="" method="post">
+                <p><input type="submit" name="submit_ip" value="Отправить"></p>
+                </form>
+                </div>
+    <div class="answer-page">
+            <p><strong>Ваш ответ на запрос IP-адреса</strong></p>
+            <div class="answer-box">
+            </div>
+        </div>
+        <div class="second-page">
+            <p><strong>История запроса IP-адресов</strong></p>
+            <div class="history-box">
+            </div>
+        </div>
+</body>
+</html>
