@@ -13,6 +13,7 @@ import os
 import sys
 from datetime import timedelta
 from pathlib import Path
+from decouple import config, Csv
 
 from decouple import config
 from django.core.cache.backends.redis import RedisCache
@@ -24,10 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+
+
 
 ALLOWED_HOSTS = ["*", "rnbzy-94-29-25-36.a.free.pinggy.link"]
 
